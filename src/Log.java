@@ -9,11 +9,11 @@ public class Log extends JFrame implements ActionListener {
     private JPanel panel = new JPanel();
     private JTextField mail = new JTextField();
     private JTextField pass = new JPasswordField();
-    private JLabel label1 = new JLabel("Votre addresse email:");
-    private JLabel label2 = new JLabel("Votre mot de passe:");
+    private JLabel label1 = new JLabel("  Votre addresse email :");
+    private JLabel label2 = new JLabel("  Votre mot de passe :");
     private Content cont = new Content();
     public Log() {
-        this.setSize(500, 400);
+        this.setSize(300, 150);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setTitle("SupPlanner");
@@ -31,8 +31,7 @@ public class Log extends JFrame implements ActionListener {
         grid.gridx = 0;
         grid.gridy = 1;
         grid.ipady = 100;
-        panel.add(cont, grid);
-
+        //panel.add(cont, grid);
         text.add(label1);
         text.add(mail);
         text.add(label2);
