@@ -13,7 +13,7 @@ public class Log extends JFrame implements ActionListener {
     private JLabel label2 = new JLabel("  Votre mot de passe :");
     private Content cont = new Content();
     public Log() {
-        this.setSize(300, 150);
+        this.setSize(350, 110);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setTitle("SupPlanner");
@@ -51,12 +51,22 @@ public class Log extends JFrame implements ActionListener {
         panel.add(insideB, grid);
 
         register.addActionListener(this);
+        login.addActionListener(this);
 
         this.setContentPane(panel);
         this.setVisible(true);
     }
     public void actionPerformed(ActionEvent arg0){
-        Register Wreg = new Register();
+        if (arg0.getSource() == this.register){
+            Register wreg = new Register();
+        }
+        else if (arg0.getSource() == this.login){
+            Dimension size = new Dimension(1280, 720);
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            Taskdash wtask = new Taskdash(new Point(screenSize.width / 2 - size.width / 2,
+                    screenSize.height / 2 - size.height / 2));
+        }
+
         this.dispose();
     }
 }
