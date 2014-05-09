@@ -9,4 +9,9 @@ public class Task extends ToDo
         super(name, authorName, startDate, endDate);
         this.complete = false;
     }
+
+    public void setComplete(boolean complete)
+    {
+        this.complete = complete;
+    }
 }
