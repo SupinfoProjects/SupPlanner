@@ -2,17 +2,15 @@ import java.util.Date;
 
 public class Task extends ToDo
 {
+    private String name;
+    private String authorName;
+    private Date startDate;
+    private Date endDate;
     private boolean complete;
 
-    public Task(String _name, String _authorName, Date _startDate, Date _endDate) throws Exception {
-        this.name = _name;
-        this.authorName = _authorName;
-        this.startDate = _startDate;
-        this.endDate = _endDate;
-        if (this.startDate.after(this.endDate))
-            throw new Exception("Start date cannot be after end date");
+    public Task(String name, String authorName, Date startDate, Date endDate) throws Exception
+    {
+        super(name, authorName, startDate, endDate);
         this.complete = false;
     }
-
-
 }
