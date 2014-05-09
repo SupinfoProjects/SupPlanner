@@ -14,4 +14,9 @@ public class Task extends ToDo
     {
         this.complete = complete;
     }
+
+    public boolean isComplete()
+    {
+        return this.complete;
+    }
 }
