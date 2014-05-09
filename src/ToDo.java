@@ -3,6 +3,6 @@ import java.util.Date;
 public abstract class ToDo {
     String name;
     String authorName;
-    Date beginDate;
+    Date startDate;
     Date endDate;
 }
