@@ -30,7 +30,7 @@ public class Projectdash extends WindowBase
         previousPageButton.setFocusPainted(false);
         previousPageButton.setBackground(Color.white);
         previousPageButton.setContentAreaFilled(true);
-        previousPageButton.setBounds(10, this.dimensions.height - 50, 50, 20);
+        previousPageButton.setBounds(30, this.dimensions.height - 50, 50, 20);
         previousPageButton.setVisible(true);
         previousPageButton.addActionListener(this);
         // Next page
@@ -40,7 +40,7 @@ public class Projectdash extends WindowBase
         nextPageButton.setFocusPainted(false);
         nextPageButton.setBackground(Color.white);
         nextPageButton.setContentAreaFilled(true);
-        nextPageButton.setBounds(340, this.dimensions.height - 50, 50, 20);
+        nextPageButton.setBounds(320, this.dimensions.height - 50, 50, 20);
         nextPageButton.setVisible(true);
         nextPageButton.addActionListener(this);
         // Buttons

@@ -24,7 +24,7 @@ public class ProjectDescriptionWindow extends WindowBase
         // Bouton retour
         this.backButton = new JButton("Retour");
         this.backButton.setLayout(null);
-        this.backButton.setBounds(10, 250, 100, 20);
+        this.backButton.setBounds(30, 250, 100, 20);
         this.backButton.addActionListener(this);
         this.panel.add(this.backButton);
     }
