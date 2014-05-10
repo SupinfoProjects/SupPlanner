@@ -7,9 +7,21 @@ public class Projectdash extends JFrame
     private JButton previousPage, nextPage, admin, back;
     private JPanel panel;
     private Project[] projects;
+    private Dimension dimensions = new Dimension(400, 200);
+    private int pageID;
 
     public Projectdash(Point _location, Project[] _projects)
     {
+        // Fenêtre
+        this.setLocation(_location);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setTitle("SupPlanner");
+        this.setResizable(false);
+        this.setSize(this.dimensions.width, this.dimensions.height);
+        this.setMaximumSize(this.dimensions);
+        this.setLocationRelativeTo(null);
+        this.setLayout(null);
+        this.setVisible(true);
         // Boutons
         this.buttons = new JButton[6];
         buttons[0] = new JButton("");
@@ -25,7 +37,7 @@ public class Projectdash extends JFrame
         previousPage.setFocusPainted(false);
         previousPage.setBackground(Color.white);
         previousPage.setContentAreaFilled(true);
-        previousPage.setBounds(10, 270, 50, 20);
+        previousPage.setBounds(10, this.dimensions.height - 50, 50, 20);
         previousPage.setVisible(true);
         // Next page
         nextPage = new JButton(">");
@@ -34,7 +46,7 @@ public class Projectdash extends JFrame
         nextPage.setFocusPainted(false);
         nextPage.setBackground(Color.white);
         nextPage.setContentAreaFilled(true);
-        nextPage.setBounds(340, 270, 50, 20);
+        nextPage.setBounds(340, this.dimensions.height - 50, 50, 20);
         nextPage.setVisible(true);
         // Buttons
         for (JButton b : this.buttons)
@@ -49,18 +61,11 @@ public class Projectdash extends JFrame
         buttons[1].setBounds(225, 25, 150, 25);
         buttons[2].setBounds(25, 60, 150, 25);
         buttons[3].setBounds(225, 60, 150, 25);
-        buttons[4].setBounds(25, 175, 150, 25);
-        buttons[5].setBounds(225, 175, 150, 25);
+        buttons[4].setBounds(25, 95, 150, 25);
+        buttons[5].setBounds(225, 95, 150, 25);
         // Projects
         this.projects = new Project[_projects.length];
         System.arraycopy(_projects, 0, this.projects, 0, this.projects.length);
-        // Fenêtre
-        this.setLocation(_location);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setTitle("SupPlanner");
-        this.setResizable(false);
-        this.setSize(400, 300);
-        this.setVisible(true);
         // Panel
         this.panel = new JPanel();
         this.panel.setLayout(null);
@@ -72,13 +77,15 @@ public class Projectdash extends JFrame
         }
         this.panel.add(this.previousPage);
         this.panel.add(this.nextPage);
+        this.panel.setMaximumSize(this.dimensions);
         this.setContentPane(panel);
     }
 
     public void showPage(int id)
     {
-        if (id > this.projects.length / 6)
+        if (id >= this.projects.length / 6 - 1 || id < 0)
             return;
+        this.pageID = id;
         int i = 0;
         for (JButton b : this.buttons)
         {
@@ -89,11 +96,24 @@ public class Projectdash extends JFrame
                 b.setText(text);
                 b.setVisible(true);
             }
-            else
-            {
-                b.setVisible(false);
-            }
+            else b.setVisible(false);
+            if (!this.previousPageExists())
+                this.previousPage.setVisible(false);
+            else this.previousPage.setVisible(true);
+            if (!this.nextPageExists())
+                this.nextPage.setVisible(false);
+            else this.nextPage.setVisible(true);
             i++;
         }
+    }
+
+    public boolean previousPageExists()
+    {
+        return !(this.pageID - 1 < 0);
+    }
+
+    public boolean nextPageExists()
+    {
+        return !(this.pageID >= this.projects.length / 6 - 1);
     }
 }
