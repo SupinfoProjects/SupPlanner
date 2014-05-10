@@ -14,12 +14,14 @@ public class Register extends JFrame implements ActionListener{
         private JLabel label2 = new JLabel("  Mot de passe :");
         private JLabel label3 = new JLabel("  Confirmation :");
         private JPanel panel = new JPanel();
-        public Register(){
+
+        public Register()
+        {
             pass = new JPasswordField(8);
             pass.addActionListener(this);
             pass2 = new JPasswordField(8);
             pass2.addActionListener(this);
-            this.setSize(400, 200);
+            this.setSize(400, 160);
             this.setLocationRelativeTo(null);
             this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             this.setTitle("SupPlanner");

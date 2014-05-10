@@ -6,7 +6,12 @@ public class Project extends ToDo
 {
     List<Task> tasks;
 
-    public Project(String name, String authorName, Date startDate, Date endDate) throws Exception
+    public Project()
+    {
+        super("", "", new Date(), new Date());
+    }
+
+    public Project(String name, String authorName, Date startDate, Date endDate)
     {
         super(name, authorName, startDate, endDate);
     }
@@ -27,5 +32,10 @@ public class Project extends ToDo
         percent *= 100;
         percent /= this.tasks.size();
         return new JProgressBar(percent);
+    }
+
+    public String getTitle()
+    {
+        return this.name;
     }
 }
