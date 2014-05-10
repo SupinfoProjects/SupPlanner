@@ -13,4 +13,24 @@ public abstract class ToDo {
         this.startDate = _startDate;
         this.endDate = _endDate;
     }
+
+    public String getTitle()
+    {
+        return this.name;
+    }
+
+    public String getAuthorName()
+    {
+        return this.authorName;
+    }
+
+    public Date getStartDate()
+    {
+        return this.startDate;
+    }
+
+    public Date getEndDate()
+    {
+        return this.endDate;
+    }
 }

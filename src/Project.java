@@ -33,9 +33,4 @@ public class Project extends ToDo
         percent /= this.tasks.size();
         return new JProgressBar(percent);
     }
-
-    public String getTitle()
-    {
-        return this.name;
-    }
 }

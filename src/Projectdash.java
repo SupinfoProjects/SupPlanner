@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class Projectdash extends BaseWindow
+public class Projectdash extends WindowBase
 {
     private JButton[] buttons;
     private JButton previousPageButton, nextPageButton, admin, back;
@@ -14,14 +14,7 @@ public class Projectdash extends BaseWindow
         super(new Dimension(400, 300));
         // Fenêtre
         this.setLocation(_location);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setTitle("SupPlanner");
-        this.setResizable(false);
-        this.setSize(this.dimensions.width, this.dimensions.height);
-        this.setMaximumSize(this.dimensions);
         this.setLocationRelativeTo(null);
-        this.setLayout(null);
-        this.setVisible(true);
         // Boutons
         this.buttons = new JButton[6];
         buttons[0] = new JButton("");
@@ -112,6 +105,7 @@ public class Projectdash extends BaseWindow
         return !(this.pageID >= this.projects.length / 6 );
     }
 
+    @Override
     public void actionPerformed(ActionEvent event)
     {
         if (event.getSource() == this.previousPageButton)

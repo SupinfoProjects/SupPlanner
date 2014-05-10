@@ -10,8 +10,8 @@ import java.awt.*;
 public class Taskdash extends JFrame {
     private JPanel panel = new JPanel();
 
-    public Taskdash(Point location){
-
+    public Taskdash(Point location)
+    {
         this.setLocation(location);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setTitle("SupPlanner");
