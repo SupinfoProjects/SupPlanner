@@ -19,8 +19,7 @@ public class Projectdash extends JFrame
         buttons[5] = new JButton("");
         // Projects
         this.projects = new Project[_projects.length];
-        for (int i = 0; i < this.projects.length; i++)
-            this.projects[i] = _projects[i];
+        System.arraycopy(_projects, 0, this.projects, 0, this.projects.length);
         // Fenêtre
         this.setLocation(_location);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -56,7 +55,10 @@ public class Projectdash extends JFrame
                 b.setText(text);
                 b.setVisible(true);
             }
-            else b.setVisible(false);
+            else
+            {
+                b.setVisible(false);
+            }
             i++;
         }
     }
