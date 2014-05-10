@@ -46,6 +46,7 @@ public class Projectdash extends WindowBase
         // Buttons
         for (JButton b : this.buttons)
         {
+            b.addActionListener(this);
             b.setContentAreaFilled(false);
             b.setLayout(null);
             b.setFocusPainted(false);
@@ -117,6 +118,18 @@ public class Projectdash extends WindowBase
         {
             ++this.pageID;
             this.showPage(this.pageID);
+        }
+        else
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                if (event.getSource() == this.buttons[i])
+                {
+                    ProjectDescriptionWindow projectDescriptionWindow =
+                            new ProjectDescriptionWindow(this.projects[i + this.pageID * 6]);
+                    this.dispose();
+                }
+            }
         }
     }
 }
