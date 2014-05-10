@@ -70,6 +70,7 @@ public class Log extends JFrame implements ActionListener
         {
             Dimension size = new Dimension(1280, 720);
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            // TODO - Récupérer projets depuis BDD
             Project[] array = new Project[50];
             for (int i = 0; i < 50; i++)
                 try {
