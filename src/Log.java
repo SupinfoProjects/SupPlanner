@@ -17,7 +17,7 @@ public class Log extends JFrame implements ActionListener
 
     public Log()
     {
-        this.setSize(350, 90);
+        this.setSize(350, 110);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setTitle("SupPlanner");
@@ -70,10 +70,10 @@ public class Log extends JFrame implements ActionListener
         {
             Dimension size = new Dimension(1280, 720);
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-            Project[] array = new Project[6];
-            for (int i = 0; i < 6; i++)
+            Project[] array = new Project[50];
+            for (int i = 0; i < 50; i++)
                 try {
-                    array[i] = new Project("super ", "toto", new Date(2014, 5, 10), new Date(2015, 12, 25));
+                    array[i] = new Project("super " + Integer.toString(i), "toto", new Date(2014, 5, 10), new Date(2015, 12, 25));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

@@ -1,13 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Projectdash extends JFrame
+public class Projectdash extends JFrame implements ActionListener
 {
     private JButton[] buttons;
-    private JButton previousPage, nextPage, admin, back;
+    private JButton previousPageButton, nextPageButton, admin, back;
     private JPanel panel;
     private Project[] projects;
-    private Dimension dimensions = new Dimension(400, 200);
+    private Dimension dimensions = new Dimension(400, 300);
     private int pageID;
 
     public Projectdash(Point _location, Project[] _projects)
@@ -31,23 +33,26 @@ public class Projectdash extends JFrame
         buttons[4] = new JButton("");
         buttons[5] = new JButton("");
         // Previous page
-        previousPage = new JButton("<");
-        previousPage.setContentAreaFilled(false);
-        previousPage.setLayout(null);
-        previousPage.setFocusPainted(false);
-        previousPage.setBackground(Color.white);
-        previousPage.setContentAreaFilled(true);
-        previousPage.setBounds(10, this.dimensions.height - 50, 50, 20);
-        previousPage.setVisible(true);
+        previousPageButton = new JButton("<");
+        previousPageButton.setContentAreaFilled(false);
+        previousPageButton.setLayout(null);
+        previousPageButton.setFocusPainted(false);
+        previousPageButton.setBackground(Color.white);
+        previousPageButton.setContentAreaFilled(true);
+        previousPageButton.setBounds(10, this.dimensions.height - 50, 50, 20);
+        previousPageButton.setVisible(true);
+        previousPageButton.addActionListener(this);
         // Next page
-        nextPage = new JButton(">");
-        nextPage.setContentAreaFilled(false);
-        nextPage.setLayout(null);
-        nextPage.setFocusPainted(false);
-        nextPage.setBackground(Color.white);
-        nextPage.setContentAreaFilled(true);
-        nextPage.setBounds(340, this.dimensions.height - 50, 50, 20);
-        nextPage.setVisible(true);
+        nextPageButton = new JButton(">");
+        nextPageButton.setContentAreaFilled(false);
+        nextPageButton.setLayout(null);
+        nextPageButton.setFocusPainted(false);
+        nextPageButton.setBackground(Color.white);
+        nextPageButton.setContentAreaFilled(true);
+        nextPageButton.setBounds(340, this.dimensions.height - 50, 50, 20);
+        nextPageButton.setVisible(true);
+        nextPageButton.addActionListener(this);
+
         // Buttons
         for (JButton b : this.buttons)
         {
@@ -75,35 +80,32 @@ public class Projectdash extends JFrame
             b.setText("");
             this.panel.add(b);
         }
-        this.panel.add(this.previousPage);
-        this.panel.add(this.nextPage);
+        this.panel.add(this.previousPageButton);
+        this.panel.add(this.nextPageButton);
         this.panel.setMaximumSize(this.dimensions);
         this.setContentPane(panel);
     }
 
     public void showPage(int id)
     {
-        if (id >= this.projects.length / 6 - 1 || id < 0)
-            return;
         this.pageID = id;
-        int i = 0;
-        for (JButton b : this.buttons)
+        for (int i = id * 6; i < this.buttons.length + id * 6; i++)
         {
-            if (i < this.projects.length) {
+            if (i < this.projects.length)
+            {
                 String text = this.projects[i].getTitle().length() > 7
                         ? this.projects[i].getTitle().substring(0, 7) + "..."
                         : this.projects[i].getTitle();
-                b.setText(text);
-                b.setVisible(true);
+                this.buttons[i - id * 6].setText(text);
+                this.buttons[i - id * 6].setVisible(true);
             }
-            else b.setVisible(false);
+            else this.buttons[i - id * 6].setVisible(false);
             if (!this.previousPageExists())
-                this.previousPage.setVisible(false);
-            else this.previousPage.setVisible(true);
+                this.previousPageButton.setVisible(false);
+            else this.previousPageButton.setVisible(true);
             if (!this.nextPageExists())
-                this.nextPage.setVisible(false);
-            else this.nextPage.setVisible(true);
-            i++;
+                this.nextPageButton.setVisible(false);
+            else this.nextPageButton.setVisible(true);
         }
     }
 
@@ -114,6 +116,20 @@ public class Projectdash extends JFrame
 
     public boolean nextPageExists()
     {
-        return !(this.pageID >= this.projects.length / 6 - 1);
+        return !(this.pageID >= this.projects.length / 6 );
+    }
+
+    public void actionPerformed(ActionEvent event)
+    {
+        if (event.getSource() == this.previousPageButton)
+        {
+            --this.pageID;
+            this.showPage(this.pageID);
+        }
+        else if (event.getSource() == this.nextPageButton)
+        {
+            ++this.pageID;
+            this.showPage(this.pageID);
+        }
     }
 }
