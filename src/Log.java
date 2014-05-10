@@ -73,7 +73,7 @@ public class Log extends JFrame implements ActionListener
             Project[] array = new Project[50];
             for (int i = 0; i < 50; i++)
                 try {
-                    array[i] = new Project("super " + Integer.toString(i), "toto", new Date(2014, 5, 10), new Date(2015, 12, 25));
+                    array[i] = new Project("super" + Integer.toString(i), "toto", new Date(2014, 5, 10), new Date(2015, 12, 25));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

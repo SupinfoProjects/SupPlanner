@@ -1,19 +1,17 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class Projectdash extends JFrame implements ActionListener
+public class Projectdash extends BaseWindow
 {
     private JButton[] buttons;
     private JButton previousPageButton, nextPageButton, admin, back;
-    private JPanel panel;
     private Project[] projects;
-    private Dimension dimensions = new Dimension(400, 300);
     private int pageID;
 
     public Projectdash(Point _location, Project[] _projects)
     {
+        super(new Dimension(400, 300));
         // Fenêtre
         this.setLocation(_location);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -52,7 +50,6 @@ public class Projectdash extends JFrame implements ActionListener
         nextPageButton.setBounds(340, this.dimensions.height - 50, 50, 20);
         nextPageButton.setVisible(true);
         nextPageButton.addActionListener(this);
-
         // Buttons
         for (JButton b : this.buttons)
         {
@@ -62,18 +59,16 @@ public class Projectdash extends JFrame implements ActionListener
             b.setBackground(Color.white);
             b.setContentAreaFilled(true);
         }
-        buttons[0].setBounds(25, 25, 150, 25);
+        buttons[0].setBounds(25,  25, 150, 25);
         buttons[1].setBounds(225, 25, 150, 25);
-        buttons[2].setBounds(25, 60, 150, 25);
+        buttons[2].setBounds(25,  60, 150, 25);
         buttons[3].setBounds(225, 60, 150, 25);
-        buttons[4].setBounds(25, 95, 150, 25);
+        buttons[4].setBounds(25,  95, 150, 25);
         buttons[5].setBounds(225, 95, 150, 25);
         // Projects
         this.projects = new Project[_projects.length];
         System.arraycopy(_projects, 0, this.projects, 0, this.projects.length);
         // Panel
-        this.panel = new JPanel();
-        this.panel.setLayout(null);
         for (JButton b : this.buttons)
         {
             b.setVisible(true);
@@ -82,8 +77,6 @@ public class Projectdash extends JFrame implements ActionListener
         }
         this.panel.add(this.previousPageButton);
         this.panel.add(this.nextPageButton);
-        this.panel.setMaximumSize(this.dimensions);
-        this.setContentPane(panel);
     }
 
     public void showPage(int id)
