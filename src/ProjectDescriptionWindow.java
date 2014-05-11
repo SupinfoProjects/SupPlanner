@@ -9,9 +9,10 @@ public class ProjectDescriptionWindow extends WindowBase
     private String projectAuthor;
     private String projectStartDate;
     private String projectEndDate;
+    private JProgressBar progressBar;
     private Font projectTitleFont = new Font("Arial", Font.BOLD, 20);
     private Font authorNameFont = new Font("Arial", Font.BOLD, 15);
-    private Font dateFont = new Font("Arial", Font.BOLD | Font.ITALIC, 10);
+    private Font defaultFont = new Font("Arial", Font.BOLD | Font.ITALIC, 10);
 
     public ProjectDescriptionWindow(Project project)
     {
@@ -31,6 +32,22 @@ public class ProjectDescriptionWindow extends WindowBase
         this.backButton.setBounds(30, 250, 100, 20);
         this.backButton.addActionListener(this);
         this.panel.add(this.backButton);
+        // ProgressBar
+        int completedTasks = 0;
+        for (Task t : project.getTasks())
+            if (t.isComplete()) completedTasks++;
+        int progress = project.getTasks().length == 0
+                ? 0
+                : completedTasks * 100 / project.getTasks().length;
+        this.progressBar = new JProgressBar(progress);
+        this.progressBar.setLayout(null);
+        this.progressBar.setBounds(30, 180, 200, 20);
+        this.panel.add(this.progressBar);
+        JLabel progressText = new JLabel();
+        progressText.setFont(defaultFont);
+        progressText.setText(Integer.toString(progress) + "%");
+        progressText.setBounds(240, 180, 30, 20);
+        this.panel.add(progressText);
     }
 
     public void display()
@@ -49,7 +66,7 @@ public class ProjectDescriptionWindow extends WindowBase
         this.panel.add(authorNameTextField);
         // Dates
         JLabel dateTextField = new JLabel();
-        dateTextField.setFont(dateFont);
+        dateTextField.setFont(defaultFont);
         dateTextField.setText(this.projectStartDate + " - " + this.projectEndDate);
         dateTextField.setBounds(20, 45, 200, 20);
         this.panel.add(dateTextField);

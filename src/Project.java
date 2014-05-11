@@ -20,6 +20,13 @@ public class Project extends ToDo
         this.tasks.add(task);
     }
 
+    public Task[] getTasks()
+    {
+        if (this.tasks == null || this.tasks.size() == 0)
+            return new Task[0];
+        return (Task[]) this.tasks.toArray();
+    }
+
     public JProgressBar getProjectProgress()
     {
         int percent = 0;
