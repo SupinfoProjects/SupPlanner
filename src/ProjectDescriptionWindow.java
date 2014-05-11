@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.Date;
 
 public class ProjectDescriptionWindow extends WindowBase
 {
@@ -22,20 +21,8 @@ public class ProjectDescriptionWindow extends WindowBase
         // Project
         this.projectTitle = project.getTitle();
         this.projectAuthor = project.getAuthorName();
-        String beginDay = (project.getStartDate().getDate() < 10)
-                ? ("0" + Integer.toString(project.getStartDate().getDate()))
-                : (Integer.toString(project.getStartDate().getDate()));
-        String beginMonth = (project.getStartDate().getMonth() < 10)
-                ? ("0" + Integer.toString(project.getStartDate().getMonth()))
-                : (Integer.toString(project.getStartDate().getMonth()));
-        projectStartDate = beginDay + "/" + beginMonth + "/" + Integer.toString(project.getStartDate().getYear());
-        String endDay = (project.getEndDate().getDate() < 10)
-                ? ("0" + Integer.toString(project.getEndDate().getDate()))
-                : (Integer.toString(project.getEndDate().getDate()));
-        String endMonth = (project.getEndDate().getMonth() < 10)
-                ? ("0" + Integer.toString(project.getEndDate().getMonth()))
-                : (Integer.toString(project.getEndDate().getMonth()));
-        this.projectEndDate = endDay + "/" + endMonth + "/" + Integer.toString(project.getEndDate().getYear());
+        projectStartDate = project.getStartDate().toString();
+        this.projectEndDate = project.getEndDate().toString();
         this.setTitle("Project '" + this.projectTitle + "' - SupPlanner");
         this.projectTitle += "                "; // Sinon le texte est décalé (aucune logique mais osef)
         // Bouton retour
@@ -58,7 +45,7 @@ public class ProjectDescriptionWindow extends WindowBase
         JLabel authorNameTextField = new JLabel();
         authorNameTextField.setFont(authorNameFont);
         authorNameTextField.setText("Auteur : " + projectAuthor);
-        authorNameTextField.setBounds(20, 30, 100, 20);;
+        authorNameTextField.setBounds(20, 30, 100, 20);
         this.panel.add(authorNameTextField);
         // Dates
         JLabel dateTextField = new JLabel();
@@ -79,7 +66,7 @@ public class ProjectDescriptionWindow extends WindowBase
             Project[] array = new Project[50];
             for (int i = 0; i < 50; i++)
                 try {
-                    array[i] = new Project("super" + Integer.toString(i), "toto", new Date(2014, 5, 10), new Date(2015, 12, 25));
+                    array[i] = new Project("super" + Integer.toString(i), "toto", new CustomDate("05/05/2014"), new CustomDate("25/11/2015"));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

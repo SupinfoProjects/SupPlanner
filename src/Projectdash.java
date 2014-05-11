@@ -7,6 +7,7 @@ public class Projectdash extends WindowBase
     private JButton[] buttons;
     private JButton previousPageButton, nextPageButton, admin, back;
     private Project[] projects;
+    private String description;
     private int pageID;
 
     public Projectdash(Point _location, Project[] _projects)
@@ -73,6 +74,16 @@ public class Projectdash extends WindowBase
         this.panel.add(this.nextPageButton);
     }
 
+    public void setDescription(String desc)
+    {
+        this.description = desc;
+    }
+
+    public String getDescription()
+    {
+        return this.description;
+    }
+
     public void showPage(int id)
     {
         this.pageID = id;
@@ -96,12 +107,12 @@ public class Projectdash extends WindowBase
         }
     }
 
-    public boolean previousPageExists()
+    private boolean previousPageExists()
     {
         return !(this.pageID - 1 < 0);
     }
 
-    public boolean nextPageExists()
+    private boolean nextPageExists()
     {
         return !(this.pageID >= this.projects.length / 6 );
     }

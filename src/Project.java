@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.util.Date;
 import java.util.List;
 
 public class Project extends ToDo
@@ -8,10 +7,10 @@ public class Project extends ToDo
 
     public Project()
     {
-        super("", "", new Date(), new Date());
+        super("", "", new CustomDate(), new CustomDate());
     }
 
-    public Project(String name, String authorName, Date startDate, Date endDate)
+    public Project(String name, String authorName, CustomDate startDate, CustomDate endDate)
     {
         super(name, authorName, startDate, endDate);
     }

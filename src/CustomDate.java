@@ -1,19 +1,33 @@
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class CustomDate extends Date
+public class CustomDate
 {
-    int year, month, day;
+    String dateString;
+    Date date;
 
-    public CustomDate(int year, int month, int day)
+    public CustomDate()
     {
-        super(year, month, day);
-        this.year = year;
-        this.month = month;
-        this.day = day;
+        this("");
     }
 
-    public int getMonth()
+    public CustomDate(String s)
     {
-        return this.month;
+        this.dateString = s;
+        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        try
+        {
+            this.date = format.parse(s);
+        }
+        catch (Exception e)
+        {
+
+        }
+    }
+
+    public String toString()
+    {
+        return this.dateString;
     }
 }

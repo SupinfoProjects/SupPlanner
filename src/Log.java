@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.util.Date;
 
 public class Log extends JFrame implements ActionListener
 {
@@ -73,11 +72,11 @@ public class Log extends JFrame implements ActionListener
             // TODO - Récupérer projets depuis BDD
             Project[] array = new Project[50];
             for (int i = 0; i < 50; i++)
-                try {
+                try
+                {
                     // TODO - Corriger ce bordel
-                    CustomDate date =  new CustomDate(2014, 1, 10);
-                    date.setDate(29);
-                    array[i] = new Project("super" + Integer.toString(i), "toto", date, new CustomDate(2015, 11, 25));
+                    CustomDate date =  new CustomDate("05/05/2014");
+                    array[i] = new Project("super" + Integer.toString(i), "toto", date, new CustomDate("25/11/2015"));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

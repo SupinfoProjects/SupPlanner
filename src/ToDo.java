@@ -1,12 +1,10 @@
-import java.util.Date;
-
 public abstract class ToDo {
     String name;
     String authorName;
-    Date startDate;
-    Date endDate;
+    CustomDate startDate;
+    CustomDate endDate;
 
-    public ToDo(String _name, String _authorName, Date _startDate, Date _endDate)
+    public ToDo(String _name, String _authorName, CustomDate _startDate, CustomDate _endDate)
     {
         this.name = _name;
         this.authorName = _authorName;
@@ -24,13 +22,13 @@ public abstract class ToDo {
         return this.authorName;
     }
 
-    public Date getStartDate()
+    public String getStartDate()
     {
-        return this.startDate;
+        return this.startDate.toString();
     }
 
-    public Date getEndDate()
+    public String getEndDate()
     {
-        return this.endDate;
+        return this.endDate.toString();
     }
 }
