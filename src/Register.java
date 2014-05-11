@@ -4,80 +4,115 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Register extends JFrame implements ActionListener{
-        private JButton register_button = new JButton("S'inscrire");
-        private JButton back = new JButton("Retour");
-        private Content cont = new Content();
-        private JTextField mail = new JTextField();
-        private JPasswordField pass;
-        private JPasswordField pass2;
-        private JLabel label1 = new JLabel("  Votre addresse email :");
-        private JLabel label2 = new JLabel("  Mot de passe :");
-        private JLabel label3 = new JLabel("  Confirmation :");
-        private JPanel panel = new JPanel();
+    private JButton register_button = new JButton("S'inscrire");
+    private JButton back = new JButton("Retour");
+    private Content cont = new Content();
+    private JTextField mail = new JTextField();
+    private JPasswordField pass;
+    private JPasswordField pass2;
+    private JLabel label1 = new JLabel("  Votre addresse email :");
+    private JLabel label2 = new JLabel("  Mot de passe :               ");
+    private JLabel label3 = new JLabel("  Confirmation :                ");
+    private JPanel panel = new JPanel();
+    public Register(){
+        pass = new JPasswordField(8);
+        pass.addActionListener(this);
+        pass2 = new JPasswordField(8);
+        pass2.addActionListener(this);
+        this.setSize(350, 350);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setTitle("SupPlanner");
+        this.setResizable(false);
 
-        public Register()
-        {
-            pass = new JPasswordField(8);
-            pass.addActionListener(this);
-            pass2 = new JPasswordField(8);
-            pass2.addActionListener(this);
-            this.setSize(400, 160);
-            this.setLocationRelativeTo(null);
-            this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            this.setTitle("SupPlanner");
-            this.setResizable(false);
-            JPanel text = new JPanel();
-            text.setLayout(new GridLayout(4,1));
-            panel.setLayout(new GridBagLayout());
-            GridBagConstraints grid = new GridBagConstraints();
-            grid.fill = GridBagConstraints.HORIZONTAL;
-            Font police = new Font("Arial",Font.BOLD, 14);
-            mail.setFont(police);
-            mail.setPreferredSize(new Dimension(100, 30));
-            grid.weightx = 0.5;
-            grid.fill = GridBagConstraints.HORIZONTAL;
-            grid.gridx = 0;
-            grid.gridy = 1;
-            grid.ipady = 100;
-            //panel.add(cont, grid);
+        panel.setLayout(new GridBagLayout());
+        GridBagConstraints grid = new GridBagConstraints();
+        grid.fill = GridBagConstraints.HORIZONTAL;
+        Font police = new Font("Arial",Font.BOLD, 14);
+        Dimension dim = new Dimension(100, 20);
+        mail.setFont(police);
+        cont.setPreferredSize(new Dimension(100,100));
+        mail.setPreferredSize(dim);
+        pass.setPreferredSize(dim);
+        pass2.setPreferredSize(dim);
 
-            text.add(label1);
-            text.add(mail);
-            text.add(label2);
-            text.add(pass);
-            text.add(label3);
-            text.add(pass2);
-            ButtonGroup usertype = new ButtonGroup();
-            JRadioButton b1 = new JRadioButton("Manager");
-            JRadioButton b2 = new JRadioButton("Employé");
-            usertype.add(b1);
-            usertype.add(b2);
-            b1.setSelected(true);
-            text.add(b1);
-            text.add(b2);
-
-            grid.weightx = 0.5;
-            grid.gridx = 0;
-            grid.gridy = 2;
-            panel.add( text, grid);
-
-            grid.fill = GridBagConstraints.HORIZONTAL;
-            grid.gridx = 0;
-            grid.gridy = 3;
-            JPanel insideB = new JPanel();
-            insideB.add(register_button);
-            insideB.add(back);
-            panel.add(insideB, grid);
-
-            back.addActionListener(this);
-            register_button.addActionListener(this);
-            this.setContentPane(panel);
-            this.setVisible(true);
+        ButtonGroup usertype = new ButtonGroup();
+        JRadioButton b1 = new JRadioButton("Manager");
+        JRadioButton b2 = new JRadioButton("Employé");
+        usertype.add(b1);
+        usertype.add(b2);
+        b1.setSelected(true);
 
 
+        grid.insets = new Insets(5,5,5,5);
+        grid.gridx = 0;
+        grid.gridy = 0;
+        grid.ipady = 5;
+        grid.fill = GridBagConstraints.VERTICAL;
+        grid.fill = GridBagConstraints.HORIZONTAL;
+        grid.gridwidth = GridBagConstraints.REMAINDER;
+        panel.add(cont, grid);
 
+        grid.gridx = 0;
+        grid.gridy = 1;
+        grid.gridwidth = 1;
+        grid.gridheight = 1;
+        grid.fill = GridBagConstraints.VERTICAL;
+        panel.add(label1, grid);
+        grid.gridx = 1;
+        grid.fill = GridBagConstraints.HORIZONTAL;
+        grid.gridwidth = GridBagConstraints.REMAINDER;
+        panel.add(mail, grid);
 
-        }
+        grid.gridx = 0;
+        grid.gridy = 2;
+        grid.gridwidth = 1;
+        grid.gridheight = 1;
+        grid.fill = GridBagConstraints.VERTICAL;
+        panel.add(label2, grid);
+        grid.gridx = 1;
+        grid.fill = GridBagConstraints.HORIZONTAL;
+        grid.gridwidth = GridBagConstraints.REMAINDER;
+        panel.add(pass, grid);
+
+        grid.gridx = 0;
+        grid.gridy = 3;
+        grid.gridwidth = 1;
+        grid.gridheight = 1;
+        grid.fill = GridBagConstraints.VERTICAL;
+        panel.add(label3, grid);
+        grid.gridx = 1;
+        grid.fill = GridBagConstraints.HORIZONTAL;
+        grid.gridwidth = GridBagConstraints.REMAINDER;
+        panel.add(pass2, grid);
+
+        grid.gridx = 0;
+        grid.gridy = 4;
+        grid.gridwidth = 1;
+        grid.gridheight = 1;
+        grid.fill = GridBagConstraints.VERTICAL;
+        panel.add(b1, grid);
+        grid.gridx = 1;
+        grid.fill = GridBagConstraints.HORIZONTAL;
+        grid.gridwidth = GridBagConstraints.REMAINDER;
+        panel.add(b2, grid);
+
+        grid.gridx = 0;
+        grid.gridy = 5;
+        grid.gridwidth = 1;
+        grid.gridheight = 1;
+        grid.fill = GridBagConstraints.VERTICAL;
+        panel.add(register_button, grid);
+        grid.gridx = 1;
+        grid.fill = GridBagConstraints.HORIZONTAL;
+        grid.gridwidth = GridBagConstraints.REMAINDER;
+        panel.add(back, grid);
+
+        back.addActionListener(this);
+        register_button.addActionListener(this);
+        this.setContentPane(panel);
+        this.setVisible(true);
+    }
     public void actionPerformed(ActionEvent arg0) {
         if (arg0.getSource() == this.register_button){
             this.registerNewMember();

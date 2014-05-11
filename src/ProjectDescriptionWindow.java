@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 public class ProjectDescriptionWindow extends WindowBase
 {
     private JButton backButton;
+    private JButton taskButton;
     private String projectTitle;
     private String projectAuthor;
     private String projectStartDate;
@@ -28,10 +29,15 @@ public class ProjectDescriptionWindow extends WindowBase
         this.projectTitle += "                "; // Sinon le texte est décalé (aucune logique mais osef)
         // Bouton retour
         this.backButton = new JButton("Retour");
+        this.taskButton = new JButton("Tâches");
         this.backButton.setLayout(null);
-        this.backButton.setBounds(30, 230, 100, 20);
+        this.taskButton.setLayout(null);
         this.backButton.addActionListener(this);
+        this.taskButton.addActionListener(this);
+        this.backButton.setBounds(10, 230, 80, 20);
+        this.taskButton.setBounds(100, 230, 80, 20);
         this.panel.add(this.backButton);
+        this.panel.add(this.taskButton);
         // Titre du project
         JLabel titleTextField = new JLabel();
         titleTextField.setFont(projectTitleFont);
@@ -86,6 +92,14 @@ public class ProjectDescriptionWindow extends WindowBase
             Projectdash projectdash = new Projectdash(new Point(screenSize.width / 2 - size.width / 2,
                     screenSize.height / 2 - size.height / 2), array);
             projectdash.showPage(0);
+            this.dispose();
+        }
+        else if (event.getSource() == this.taskButton)
+        {
+            Dimension size = new Dimension(720, 720);
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            Taskdash wtask = new Taskdash(new Point(screenSize.width / 2 - size.width / 2,
+                    screenSize.height / 2 - size.height / 2));
             this.dispose();
         }
     }

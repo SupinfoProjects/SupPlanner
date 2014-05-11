@@ -16,42 +16,62 @@ public class Log extends JFrame implements ActionListener
 
     public Log()
     {
-        this.setSize(350, 110);
+        this.setSize(300, 300);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setTitle("SupPlanner");
         this.setResizable(false);
-        JPanel text = new JPanel();
-        text.setLayout(new GridLayout(2,1));
         panel.setLayout(new GridBagLayout());
+        cont.setPreferredSize(new Dimension(100, 100));
         GridBagConstraints grid = new GridBagConstraints();
         grid.fill = GridBagConstraints.HORIZONTAL;
         Font police = new Font("Arial",Font.BOLD, 14);
         mail.setFont(police);
-        mail.setPreferredSize(new Dimension(100, 30));
-        grid.weightx = 0.5;
+        Dimension dim = new Dimension(100, 20);
+        mail.setPreferredSize(dim);
+        pass.setPreferredSize(dim);
+
+        grid.insets = new Insets(5,5,5,5);
+        grid.ipady = 10;
+        grid.gridx = 0;
+        grid.gridy = 0;
+        grid.fill = GridBagConstraints.VERTICAL;
         grid.fill = GridBagConstraints.HORIZONTAL;
+        grid.gridwidth = GridBagConstraints.REMAINDER;
+        panel.add(cont, grid);
+
         grid.gridx = 0;
         grid.gridy = 1;
-        grid.ipady = 100;
-        //panel.add(cont, grid);
-        text.add(label1);
-        text.add(mail);
-        text.add(label2);
-        text.add(pass);
+        grid.gridwidth = 1;
+        grid.gridheight = 1;
+        grid.fill = GridBagConstraints.VERTICAL;
+        panel.add(label1,grid);
+        grid.gridx = 1;
+        grid.fill = GridBagConstraints.HORIZONTAL;
+        grid.gridwidth = GridBagConstraints.REMAINDER;
+        panel.add(mail,grid);
 
-        grid.weightx = 0.5;
         grid.gridx = 0;
         grid.gridy = 2;
-        panel.add( text, grid);
-
+        grid.gridwidth = 1;
+        grid.gridheight = 1;
+        grid.fill = GridBagConstraints.VERTICAL;
+        panel.add(label2,grid);
+        grid.gridx = 1;
         grid.fill = GridBagConstraints.HORIZONTAL;
+        grid.gridwidth = GridBagConstraints.REMAINDER;
+        panel.add(pass,grid);
+
         grid.gridx = 0;
         grid.gridy = 3;
-        JPanel insideB = new JPanel();
-        insideB.add(register);
-        insideB.add(login);
-        panel.add(insideB, grid);
+        grid.gridwidth = 1;
+        grid.gridheight = 1;
+        grid.fill = GridBagConstraints.VERTICAL;
+        panel.add(register,grid);
+        grid.gridx = 1;
+        grid.fill = GridBagConstraints.HORIZONTAL;
+        grid.gridwidth = GridBagConstraints.REMAINDER;
+        panel.add(login,grid);
 
         register.addActionListener(this);
         login.addActionListener(this);
