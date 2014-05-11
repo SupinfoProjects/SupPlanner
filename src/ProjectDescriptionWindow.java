@@ -29,29 +29,9 @@ public class ProjectDescriptionWindow extends WindowBase
         // Bouton retour
         this.backButton = new JButton("Retour");
         this.backButton.setLayout(null);
-        this.backButton.setBounds(30, 250, 100, 20);
+        this.backButton.setBounds(30, 230, 100, 20);
         this.backButton.addActionListener(this);
         this.panel.add(this.backButton);
-        // ProgressBar
-        int completedTasks = 0;
-        for (Task t : project.getTasks())
-            if (t.isComplete()) completedTasks++;
-        int progress = project.getTasks().length == 0
-                ? 0
-                : completedTasks * 100 / project.getTasks().length;
-        this.progressBar = new JProgressBar(progress);
-        this.progressBar.setLayout(null);
-        this.progressBar.setBounds(30, 180, 200, 20);
-        this.panel.add(this.progressBar);
-        JLabel progressText = new JLabel();
-        progressText.setFont(defaultFont);
-        progressText.setText(Integer.toString(progress) + "%");
-        progressText.setBounds(240, 180, 30, 20);
-        this.panel.add(progressText);
-    }
-
-    public void display()
-    {
         // Titre du project
         JLabel titleTextField = new JLabel();
         titleTextField.setFont(projectTitleFont);
@@ -70,6 +50,22 @@ public class ProjectDescriptionWindow extends WindowBase
         dateTextField.setText(this.projectStartDate + " - " + this.projectEndDate);
         dateTextField.setBounds(20, 45, 200, 20);
         this.panel.add(dateTextField);
+        // ProgressBar
+        int completedTasks = 0;
+        for (Task t : project.getTasks())
+            if (t.isComplete()) completedTasks++;
+        int progress = project.getTasks().length == 0
+                ? 0 // Pour éviter de lever une exception si pas de tâches
+                : completedTasks * 100 / project.getTasks().length;
+        this.progressBar = new JProgressBar(progress);
+        this.progressBar.setLayout(null);
+        this.progressBar.setBounds(200, 230, 150, 20);
+        this.panel.add(this.progressBar);
+        JLabel progressText = new JLabel();
+        progressText.setFont(defaultFont);
+        progressText.setText(Integer.toString(progress) + "%");
+        progressText.setBounds(360, 230, 30, 20);
+        this.panel.add(progressText);
     }
 
     @Override

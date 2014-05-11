@@ -138,7 +138,6 @@ public class Projectdash extends WindowBase
                 {
                     ProjectDescriptionWindow projectDescriptionWindow =
                             new ProjectDescriptionWindow(this.projects[i + this.pageID * 6]);
-                    projectDescriptionWindow.display();
                     this.dispose();
                 }
             }
