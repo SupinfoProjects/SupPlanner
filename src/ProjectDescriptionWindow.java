@@ -34,8 +34,8 @@ public class ProjectDescriptionWindow extends WindowBase
         this.taskButton.setLayout(null);
         this.backButton.addActionListener(this);
         this.taskButton.addActionListener(this);
-        this.backButton.setBounds(10, 230, 80, 20);
-        this.taskButton.setBounds(100, 230, 80, 20);
+        this.backButton.setBounds(10, 230, 120, 20);
+        this.taskButton.setBounds(10, 200, 120, 20);
         this.panel.add(this.backButton);
         this.panel.add(this.taskButton);
         // Titre du project
@@ -65,7 +65,7 @@ public class ProjectDescriptionWindow extends WindowBase
                 : completedTasks * 100 / project.getTasks().length;
         this.progressBar = new JProgressBar(progress);
         this.progressBar.setLayout(null);
-        this.progressBar.setBounds(200, 230, 150, 20);
+        this.progressBar.setBounds(180, 230, 170, 20);
         this.panel.add(this.progressBar);
         JLabel progressText = new JLabel();
         progressText.setFont(defaultFont);
