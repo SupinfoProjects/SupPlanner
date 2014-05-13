@@ -1,12 +1,15 @@
+import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
 public class Register {
     public static boolean register(Connection connection, String name, String mail, String pass, String userType){
 
-        try{
+        try
+        {
+            name = name.toLowerCase();
             java.sql.Statement statement = connection.createStatement();
-            statement.executeUpdate("INSERT INTO user (name,email,password,userType) VALUES ('"+ name + "','"+mail+"','"+pass+"','"+userType+"');");
+            statement.executeUpdate("INSERT INTO user (name,email,password,userType) VALUES ('" + name + "','" + mail + "','" + pass + "','" + userType + "');");
             System.out.println("requête effectuée.");
             return true;
         }

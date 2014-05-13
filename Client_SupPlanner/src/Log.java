@@ -17,7 +17,7 @@ public class Log extends JFrame implements ActionListener
     private JButton register = new JButton("S'inscrire");
     private JPanel panel = new JPanel();
     private JTextField mail = new JTextField();
-    private JTextField pass = new JPasswordField();
+    private JPasswordField pass = new JPasswordField();
     private JLabel label1 = new JLabel("  Votre addresse email :");
     private JLabel label2 = new JLabel("  Votre mot de passe :");
     private Content cont = new Content();
@@ -102,14 +102,20 @@ public class Log extends JFrame implements ActionListener
             BufferedReader in;
             PrintWriter out;
             String email = mail.getText();
-            String password = pass.getText();
+            char[] password = pass.getPassword();
+            String newPass = new String(password);
+            String encryptedPassword = "";
+            for (char c : newPass.toCharArray())
+            {
+                encryptedPassword += (c << 69) % 255;
+            }
             try {
                 socket = new Socket(InetAddress.getLocalHost(), 8080);
                 System.out.println("Demande de connexion");
                 out = new PrintWriter(socket.getOutputStream());
                 out.println("login");
                 out.println(email);
-                out.println(password);
+                out.println(encryptedPassword);
                 out.flush();
                 in = new BufferedReader (new InputStreamReader(socket.getInputStream()));
                 String response = in.readLine();

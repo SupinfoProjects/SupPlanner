@@ -14,7 +14,8 @@ import java.sql.*;
 public class Connect {
     public static void main(String[] args){
         Connection connexion = null;
-        try {
+        try
+        {
             Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Driver OK");
             String url = "jdbc:mysql://localhost:3306/SupPlanner";
@@ -25,7 +26,8 @@ public class Connect {
             System.out.println("Connexion effective !");
 
         }
-        catch (Exception e){
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
         PrintWriter out;
@@ -33,15 +35,18 @@ public class Connect {
         ServerSocket socketServer;
         Socket socketDuServeur ;
 
-        try {
-            while (true){
+        try
+        {
+            while (true)
+            {
                 socketServer = new ServerSocket(8080);
                 System.out.println("Le serveur est à l'écoute du port "+socketServer.getLocalPort());
                 socketDuServeur = socketServer.accept();
                 System.out.println("Tentative de connection");
                 Read = new BufferedReader (new InputStreamReader(socketDuServeur.getInputStream()));
                 String step = Read.readLine();
-                if (step.equals("login")){
+                if (step.equals("login"))
+                {
                     String log = Read.readLine();
                     String password = Read.readLine();
                     out = new PrintWriter(socketDuServeur.getOutputStream());
@@ -50,37 +55,65 @@ public class Connect {
                     {
                         connectionTry = false;
                     }
-                    else {
+                    else
+                    {
                         connectionTry = Login.login(connexion, log, password);
                     }
 
-                    if (connectionTry){
+                    if (connectionTry)
+                    {
                         System.out.println("Connection établie.");
                         out.println("true");
                         out.flush();
                     }
-                    else {
+                    else
+                    {
                         out.println("false");
                         out.flush();
                     }
                     socketServer.close();
                     socketDuServeur.close();
                 }
-                else if(step.equals("register")){
+                else if(step.equals("register"))
+                {
                     String name = Read.readLine();
                     String mail = Read.readLine();
                     String pass = Read.readLine();
                     String userType = Read.readLine();
                     out = new PrintWriter(socketDuServeur.getOutputStream());
-                    Boolean inscriptionTry;
-                    inscriptionTry = Register.register(connexion, name, mail, pass, userType);
+                    Boolean inscriptionTry = true;
+                    boolean checkN = Check.checkName(connexion, name);
+                    boolean checkM = Check.checkMail(connexion, mail);
+                    if (!checkN && !checkM)
+                    {
+                        inscriptionTry = Register.register(connexion, name, mail, pass, userType);
+                        out.println("RAS");
+                    }
+                    else
+                    {
+                        if (checkN)
+                        {
+                            System.out.println("Impossible de créer utilisateur le nom est déja utilisé.");
+                            out.println("NameU");
+                            out.flush();
+                        }
+                        else if (checkM)
+                        {
+                            System.out.println("Impossible de créer utilisateur le mail est déja utilisé.");
+                            out.println("MailU");
+                            out.flush();
+                        }
+                        inscriptionTry = false;
+                    }
 
-                    if (inscriptionTry){
+                    if (inscriptionTry)
+                    {
                         System.out.println("Ajout utilisateur effectué.");
                         out.println("true");
                         out.flush();
                     }
-                    else {
+                    else
+                    {
                         out.println("false");
                         out.flush();
                     }
@@ -88,12 +121,17 @@ public class Connect {
                     socketDuServeur.close();
                 }
             }
-        }catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
-        try {
+        try
+        {
             connexion.close();
-        }catch (Exception e){
+        }
+        catch (Exception e)
+        {
             System.out.println(e);
         }
     }
