@@ -1,8 +1,3 @@
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
-import javax.sql.StatementEvent;
-import javax.swing.plaf.nimbus.State;
-import java.beans.Statement;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,6 +5,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.*;
+import java.util.Scanner;
 
 public class Connect {
     public static void main(String[] args){
@@ -18,7 +14,7 @@ public class Connect {
         {
             Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Driver OK");
-            String url = "jdbc:mysql://localhost:3306/SupPlanner";
+            String url = "jdbc:mysql://localhost/SupPlanner";
             String user = "root";
             String passwd = "";
 
@@ -34,6 +30,7 @@ public class Connect {
         BufferedReader Read;
         ServerSocket socketServer;
         Socket socketDuServeur ;
+        Scanner sc = new Scanner(System.in);
 
         try
         {

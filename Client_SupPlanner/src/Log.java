@@ -119,7 +119,6 @@ public class Log extends JFrame implements ActionListener
                 out.flush();
                 in = new BufferedReader (new InputStreamReader(socket.getInputStream()));
                 String response = in.readLine();
-                System.out.println(response);
                 if (response.equals("true")){
                     Dimension size = new Dimension(1280, 720);
                     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -147,6 +146,7 @@ public class Log extends JFrame implements ActionListener
                             JOptionPane.WARNING_MESSAGE);
                     mail.setText("");
                     pass.setText("");
+                    System.out.println("email ou mot de passe invalide");
                     Log login;
                     login = new Log();
                 }

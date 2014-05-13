@@ -1,4 +1,4 @@
-SupPlannerClient
+SupPlanner
 ==========
 
 A Supinfo Java project
