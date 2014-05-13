@@ -12,7 +12,7 @@ public class Projectdash extends WindowBase
 
     public Projectdash(Point _location, Project[] _projects)
     {
-        super(new Dimension(400, 250));
+        super(new Dimension(400, 300));
         // Fenêtre
         this.setLocation(_location);
         this.setLocationRelativeTo(null);
