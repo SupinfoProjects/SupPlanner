@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Lun 12 Mai 2014 à 16:08
+-- Généré le: Mar 13 Mai 2014 à 10:36
 -- Version du serveur: 5.6.12-log
 -- Version de PHP: 5.4.12
 
@@ -77,15 +77,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(32) DEFAULT NULL,
   `projectid` int(16) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Contenu de la table `user`
 --
 
 INSERT INTO `user` (`id`, `userType`, `name`, `email`, `password`, `projectid`) VALUES
-(2, 'Employé', 'Iemsal', '159808@supinfo.com', 'azertY69', NULL),
-(3, 'Employé', 'Charly', '159874@supinfo.com', 'azertY69', NULL);
+(18, 'Manager', 'iemsal', '159808@supinfo.com', '4479172781424319839', NULL);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
