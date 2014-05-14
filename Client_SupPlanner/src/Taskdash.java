@@ -10,13 +10,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Taskdash extends JFrame implements ActionListener{
+public class Taskdash extends JFrame implements ActionListener
+{
     private JPanel panel = new JPanel();
     private JButton modify = new JButton("Modifier");
     private JButton create = new JButton("Créer");
     private Content cont = new Content();
-    public Taskdash(Point location){
-
+    
+    public Taskdash(Point location)
+    {
         this.setLocation(location);
         cont.setPreferredSize(new Dimension(100,100));
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -80,11 +82,15 @@ public class Taskdash extends JFrame implements ActionListener{
         this.setContentPane(panel);
         this.setVisible(true);
     }
-    public void actionPerformed(ActionEvent arg0){
-        if (arg0.getSource() == this.modify){
+    
+    public void actionPerformed(ActionEvent arg0)
+    {
+        if (arg0.getSource() == this.modify)
+        {
 
         }
-        else if (arg0.getSource() == this.create){
+        else if (arg0.getSource() == this.create)
+        {
             CreateTask newTask = new CreateTask();
         }
     }
