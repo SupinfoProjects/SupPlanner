@@ -4,7 +4,8 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
-public class CreateTask extends JFrame{
+public class CreateTask extends JFrame
+{
     private JButton create = new JButton("Créer");
     private JLabel name = new JLabel(  "Nom de la tâche :    ");
     private JLabel lBegin = new JLabel("Date de début :         ");
@@ -14,7 +15,8 @@ public class CreateTask extends JFrame{
     private JTextField nameEntry = new JTextField();
 
 
-    public CreateTask(){
+    public CreateTask()
+    {
         this.setSize(350, 300);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -37,14 +39,13 @@ public class CreateTask extends JFrame{
         desc.setEditable(true);
         desc.setFont(police);
         nameEntry.setFont(police);
-
-
+        
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
         nameEntry.setPreferredSize(new Dimension(100, 30));
         GridBagConstraints gbc = new GridBagConstraints();
 
-        gbc.gridx=0;
+        gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.ipady = 10;
         gbc.insets = new Insets(5,5,5,5);
@@ -78,9 +79,9 @@ public class CreateTask extends JFrame{
         panel.add(lEnd, gbc);
         gbc.gridx = 1;
         panel.add(endD,gbc);
-        gbc.gridx=2;
+        gbc.gridx = 2;
         panel.add(endM,gbc);
-        gbc.gridx=3;
+        gbc.gridx = 3;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         panel.add(endH,gbc);
@@ -106,7 +107,5 @@ public class CreateTask extends JFrame{
 
         this.setContentPane(panel);
         this.setVisible(true);
-
-
     }
 }
