@@ -8,7 +8,8 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 
-public class Register extends JFrame implements ActionListener{
+public class Register extends JFrame implements ActionListener
+{
     private JButton register_button = new JButton("S'inscrire");
     private JButton back = new JButton("Retour");
     private Content cont = new Content();
@@ -23,7 +24,9 @@ public class Register extends JFrame implements ActionListener{
     private JLabel label2 = new JLabel("  Mot de passe :               ");
     private JLabel label3 = new JLabel("  Confirmation :                ");
     private JPanel panel = new JPanel();
-    public Register(){
+    
+    public Register()
+    {
         pass = new JPasswordField(8);
         pass.addActionListener(this);
         pass2 = new JPasswordField(8);
@@ -47,7 +50,6 @@ public class Register extends JFrame implements ActionListener{
         pass2.setPreferredSize(dim);
 
         ButtonGroup usertype = new ButtonGroup();
-
         usertype.add(b1);
         usertype.add(b2);
         b1.setSelected(true);
@@ -134,8 +136,11 @@ public class Register extends JFrame implements ActionListener{
         this.setContentPane(panel);
         this.setVisible(true);
     }
-    public void actionPerformed(ActionEvent arg0) {
-        if (arg0.getSource() == this.register_button){
+    
+    public void actionPerformed(ActionEvent arg0)
+    {
+        if (arg0.getSource() == this.register_button)
+        {
             boolean test = this.registerNewMember();
             if (test)
             {
@@ -208,7 +213,8 @@ public class Register extends JFrame implements ActionListener{
                     {
                         System.out.println("Une erreur est survenue.");
                     }
-                }catch (Exception e)
+                }
+                catch (Exception e)
                 {
                     System.out.println(response);
                     System.out.println(e);
@@ -222,7 +228,8 @@ public class Register extends JFrame implements ActionListener{
         }
     }
 
-    private boolean registerNewMember() {
+    private boolean registerNewMember()
+    {
         char[] cPass = pass.getPassword();
         char[] cPass2 = pass2.getPassword();
         String mailText = mail.getText();
@@ -231,13 +238,13 @@ public class Register extends JFrame implements ActionListener{
         int upperCount = 0;
         int numberCount = 0;
 
-        for (int i=0 ; i < password1.length() ; i++)
+        for (int i = 0; i < password1.length(); i++)
         {
-            if(cPass[i] == Character.toUpperCase(cPass[i]) )
+            if (cPass[i] == Character.toUpperCase(cPass[i]))
             {
                 upperCount++;
             }
-            if(Character.isDigit(cPass[i]))
+            if (Character.isDigit(cPass[i]))
             {
                 numberCount++;
             }
