@@ -109,7 +109,8 @@ public class Log extends JFrame implements ActionListener
             {
                 encryptedPassword += (c << 69) % 255;
             }
-            try {
+            try
+            {
                 socket = new Socket(InetAddress.getLocalHost(), 8080);
                 System.out.println("Demande de connexion");
                 out = new PrintWriter(socket.getOutputStream());
@@ -130,7 +131,8 @@ public class Log extends JFrame implements ActionListener
                             // TODO - Corriger ce bordel
                             CustomDate date =  new CustomDate("05/05/2014");
                             array[i] = new Project("super" + Integer.toString(i), "toto", date, new CustomDate("25/11/2015"));
-                        } catch (Exception e) {
+                        } catch (Exception e)
+                        {
                             e.printStackTrace();
                         }
                     Projectdash wtask = new Projectdash(new Point(screenSize.width / 2 - size.width / 2,
